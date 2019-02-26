@@ -19,11 +19,16 @@ int main()
 
         	/* read in a line */
     		fgets(line, 80, stdin);
+	
+		//Clears input buffer
+		int ch;
+		while((ch = getchar()) != '\n' && ch != EOF);
 
-        	/* get rid of trailing newline character */
+        	
+		/* get rid of trailing newline character */
     		len = strlen(line) - 1;
-    		if (line[len] == '\n')
-        	line[len] = '\0';
+  		if (line[len] == '\n')
+  	    	line[len] = '\0';
 
 		//Changes characters in line to lowercase
 		for (int i=0; line[i]; i++)
@@ -36,8 +41,11 @@ int main()
    	 	printf ("command: %s\n", comm);
     		printf ("parameter 1: %s\n", p1);
     		printf ("parameter 2: %s\n", p2);
-		line[0] = '\0';
-		memset(line,0,strlen(line));
+		//line[0] = '\0';
+		//fflush(stdin);
+		//memset(line,0,strlen(line));
+		//memset(line,0,sizeof(line));
+
 	}while(1);
 
     return 0;
@@ -62,9 +70,9 @@ void breakUp(char *str, char *c, char *p1, char *p2, int *n)
 	int len_str = strlen(str);
 	for( int i = 0; i < len_str; i++)
 	{
-		if(str[i] != ' ' && str[i] != '\n' && str[i] != '\t')
+		if( str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
 		{
-			while( str[i] != ' ' && str[i] != '\n' && str[i] != '\t')
+			while( str[i] != ' ' && str[i] != '\0' && str[i] != '\t')
 			{
 				if ( *n == 0 )
 				{
