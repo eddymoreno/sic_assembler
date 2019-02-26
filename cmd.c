@@ -25,6 +25,10 @@ int main()
     		if (line[len] == '\n')
         	line[len] = '\0';
 
+		//Changes characters in line to lowercase
+		for (int i=0; line[i]; i++)
+			line[i] = tolower(line[i]);
+
         	/* Break up the line */
     		breakUp(line, comm, p1, p2, &n);
 
@@ -32,7 +36,8 @@ int main()
    	 	printf ("command: %s\n", comm);
     		printf ("parameter 1: %s\n", p1);
     		printf ("parameter 2: %s\n", p2);
-	
+		line[0] = '\0';
+		memset(line,0,strlen(line));
 	}while(1);
 
     return 0;
